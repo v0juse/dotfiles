@@ -119,6 +119,8 @@ alias leet="nvim leetcode.nvim"
 alias t="~/.local/bin/tmux-sessionizer"
 # source ~/.aliases
 
+# add zoxide to the path
+export PATH=$PATH:~/.local/bin
 # set up zoxide
 eval "$(zoxide init zsh)"
 
@@ -137,6 +139,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 export PATH=$PATH:$HOME/void/gcc-arm-none-eabi-10.3-2021.10/bin
+export PATH=$PATH:~/.local/bin
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
