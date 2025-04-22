@@ -15,7 +15,7 @@ require("voidev.lazy_init")
 -- DO.not
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('Voidev', {})
+local VoidevGroup = augroup('Voidev', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -42,13 +42,13 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = VoidevGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
+    group = VoidevGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
