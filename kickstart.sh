@@ -138,6 +138,8 @@ if ! which docker >/dev/null; then
 		VERSION=$(. /etc/os-release && echo "$UBUNTU_CODENAME")
 	elif [ "$OS_NAME" == "Ubuntu" ]; then
 		VERSION=$(. /etc/os-release && echo "$VERSION_CODENAME")
+	elif [ "$OS_NAME" == "Pop!_OS" ]; then
+		VERSION=$(. /etc/os-release && echo "$UBUNTU_CODENAME")
 	else
 		echo "Invalid OS used: $OS_NAME"
 		exit 1
