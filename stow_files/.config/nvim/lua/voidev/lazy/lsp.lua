@@ -16,11 +16,14 @@ return {
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        -- Extend capabilities with file operations support for nvim-lsp-file-operations
+        local lsp_file_operations = require("lsp-file-operations")
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+            cmp_lsp.default_capabilities(),
+            lsp_file_operations.default_capabilities())
 
         require("fidget").setup({})
         require("mason").setup()
@@ -28,13 +31,28 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "tsserver",
+                "ts_ls",
+                "pyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
 
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
+                    }
+                end,
+
+                ["pyright"] = function()
+                    require("lspconfig").pyright.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            python = {
+                                analysis = {
+                                    autoImportCompletions = true,
+                                    typeCheckingMode = "basic",
+                                },
+                            },
+                        },
                     }
                 end,
 

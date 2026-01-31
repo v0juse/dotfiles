@@ -50,7 +50,8 @@ sudo apt install -y tmux eza tree bat ripgrep fzf nodejs npm unzip \
 # NOTE: It is likely that you will need to choose the font on the terminal settings
 cd "$download_dir" || exit 1
 if [ ! -f ~/.fonts/FiraCodeNerdFontMono-Regular.ttf ]; then
-	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fontskic
+	mkdir -p ~/.fonts
+	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fonts
 	fc-cache -fv ~/.fonts
 fi
 # if [ ! -f ~/.fonts/JetBrainsMonoNerdFontMono-Medium.ttf ]; then

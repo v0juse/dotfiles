@@ -140,6 +140,8 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 export PATH=$PATH:$HOME/void/gcc-arm-none-eabi-10.3-2021.10/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
