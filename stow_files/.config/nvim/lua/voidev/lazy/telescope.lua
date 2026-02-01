@@ -9,6 +9,17 @@ return {
 
     config = function()
         local actions = require("telescope.actions")
+        local builtin = require('telescope.builtin')
+
+        -- Neovim nightly (0.11+) removed `vim.treesitter.language.ft_to_lang`;
+        -- provide a shim so Telescope previewers keep syntax highlighting.
+        local ok, ts_language = pcall(require, "vim.treesitter.language")
+        if ok and ts_language and not ts_language.ft_to_lang then
+            ts_language.ft_to_lang = function(ft)
+                return require("nvim-treesitter.parsers").ft_to_lang(ft)
+            end
+        end
+
         require('telescope').setup({
             defaults = {
                 mappings = {
@@ -21,10 +32,24 @@ return {
             }
         })
 
-        local builtin = require('telescope.builtin')
+        local show_hidden = false
+
+        local function toggle_hidden()
+            show_hidden = not show_hidden
+            vim.notify("Telescope hidden files: " .. (show_hidden and "on" or "off"), vim.log.levels.INFO)
+        end
+
+        local function find_files()
+            builtin.find_files({ hidden = show_hidden, no_ignore = show_hidden })
+        end
+
         local keymap = vim.keymap
         keymap.set('n', '<C-p>', builtin.find_files, {})
-        keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[F]ind [F]iles" })
+        keymap.set("n", "<leader>ff", find_files, { desc = "[F]ind [F]iles" })
+        keymap.set("n", "<leader>fh", function()
+            toggle_hidden()
+            find_files()
+        end, { desc = "Toggle hidden files and search" })
         keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "[F]ind [G]it Files" })
         keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "[F]ind [R]ecent Files" })
         keymap.set('n', "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "[F]ind existing [B]uffers" })

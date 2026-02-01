@@ -22,5 +22,9 @@ return {
                 },
             },
         })
+
+        vim.keymap.set("n", "<leader>uc", function()
+            vim.cmd("CloakToggle")
+        end, { desc = "Toggle env secret cloak" })
     end
 }

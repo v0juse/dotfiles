@@ -104,5 +104,16 @@ return {
         vim.keymap.set("n", "<C-b>", function()
             oil.toggle_float()
         end, { desc = "Toggle Oil file explorer" })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "oil",
+            callback = function(event)
+                local actions = require("oil.actions")
+                vim.keymap.set("n", "<leader>oh", actions.toggle_hidden.callback, {
+                    buffer = event.buf,
+                    desc = "Toggle hidden files",
+                })
+            end,
+        })
     end
 }

@@ -2,7 +2,14 @@
 return {
     'numToStr/Comment.nvim',
     opts = {
-        -- add any options here
+        toggler = {
+            line = 'gcc',
+            block = nil, -- disable gbc block toggle
+        },
+        opleader = {
+            line = 'gc',
+            block = nil,
+        },
     }
 }
 
