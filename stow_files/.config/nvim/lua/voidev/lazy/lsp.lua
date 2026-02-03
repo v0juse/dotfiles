@@ -96,14 +96,14 @@ return {
 
         vim.diagnostic.config({
             -- update_in_insert = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
+             virtual_text = {
+        prefix = '●', -- Customize the prefix icon
+        source = "always", -- Display always
+    },
+    severity_sort = true,
+    float = {
+        source = true,
+    },
         })
     end
 }
