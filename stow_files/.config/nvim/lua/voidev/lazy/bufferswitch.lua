@@ -53,6 +53,7 @@ return {
         -- Also support in insert mode for convenience
         vim.keymap.set("i", "<C-Tab>", "<Esc><cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
         vim.keymap.set("n", "<leader>q", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+        vim.keymap.set("n", "<leader>Q", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
         vim.keymap.set("i", "<C-S-Tab>", "<Esc><cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 
         -- Pick buffer with floating picker (VS Code style)
