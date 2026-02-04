@@ -75,6 +75,7 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 vim.keymap.set("n", "<leader>rs", "<cmd>bufdo bwipeout<CR>");
+vim.keymap.set("n", "<c-k>w", "<cmd>bufdo bwipeout<CR><cmd>Alpha<CR>");
 --
 -- goes back and forth like weee
 vim.keymap.set("n", "H", "<C-o>")
