@@ -34,6 +34,22 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-e>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<C-w>", "<cmd>bdelete<CR>")
+
+-- Window management
+vim.keymap.set("n", "<leader>ww", "<C-w>w", { desc = "Next window" })
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Move to down window" })
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Move to up window" })
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Move to right window" })
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split vertical" })
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split horizontal" })
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize windows" })
+vim.keymap.set("n", "<leader>w<left>", "<C-w><", { desc = "Decrease width" })
+vim.keymap.set("n", "<leader>w<right>", "<C-w>>", { desc = "Increase width" })
+vim.keymap.set("n", "<leader>w<up>", "<C-w>+", { desc = "Increase height" })
+vim.keymap.set("n", "<leader>w<down>", "<C-w>-", { desc = "Decrease height" })
+vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "Quit window" })
+
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-f>", vim.lsp.buf.format)
 

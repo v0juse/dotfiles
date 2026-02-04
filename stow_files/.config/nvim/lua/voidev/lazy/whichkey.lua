@@ -52,6 +52,7 @@ return {
             { "<leader>n", group = "Neogen" },
             { "<leader>t", group = "Test/Trouble" },
             { "<leader>g", group = "Git" },
+            { "<leader>w", group = "Window" },
 
             -- Individual mappings with descriptions (from remap.lua)
             { "<leader>pv", desc = "Open parent directory (Oil)" },
