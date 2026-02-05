@@ -53,8 +53,8 @@ vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "Quit window" })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<C-f>", vim.lsp.buf.format)
 
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<C-S-K>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-S-J>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -80,3 +80,24 @@ vim.keymap.set("n", "<c-k>w", "<cmd>bufdo bwipeout<CR><cmd>Alpha<CR>");
 -- goes back and forth like weee
 vim.keymap.set("n", "H", "<C-o>")
 vim.keymap.set("n", "L", "<C-i>")
+
+vim.keymap.set("n", "<c-k>c", function()
+    local filepath = vim.fn.expand('%:p')
+    vim.fn.setreg('+', filepath)
+    vim.notify('Copied: ' .. filepath)
+end, { desc = "Copy current file path" })
+
+vim.keymap.set({ "n", "v" }, "<c-k><s-c>", function()
+    local filepath = vim.fn.expand('%:p')
+    local line_info
+    if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' then
+        local start_line = vim.fn.line("'<")
+        local end_line = vim.fn.line("'>")
+        line_info = start_line .. '-' .. end_line
+    else
+        line_info = vim.fn.line('.')
+    end
+    local result = filepath .. ':' .. line_info
+    vim.fn.setreg('+', result)
+    vim.notify('Copied: ' .. result)
+end, { desc = "Copy file with line markers" })

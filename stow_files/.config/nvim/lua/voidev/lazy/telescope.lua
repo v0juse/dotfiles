@@ -55,6 +55,10 @@ return {
         keymap.set('n', "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "[F]ind existing [B]uffers" })
         keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>", { desc = "[S]earch [G]rep" })
         keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch [W]ord Under Cursor" })
+        keymap.set('n', '<leader>ss', "<cmd>Telescope lsp_document_symbols<cr>", { desc = '[S]earch [S]imbols' })
+        keymap.set('n', '<leader>sas', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { desc = '[S]earch [A]ll [S]imbols' })
+        keymap.set('n', '<leader>sr', "<cmd>Telescope lsp_references<cr>", { desc = '[S]earch [R]eferences' })
+
         vim.keymap.set('n', '<leader>pfg', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
