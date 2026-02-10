@@ -52,6 +52,7 @@ return {
             { "<leader>n", group = "Neogen" },
             { "<leader>t", group = "Test/Trouble" },
             { "<leader>g", group = "Git" },
+            { "<leader>d", group = "Debug" },
             { "<leader>w", group = "Window" },
 
             -- Individual mappings with descriptions (from remap.lua)
@@ -71,6 +72,13 @@ return {
             { "<leader>rs", desc = "Close all buffers" },
             { "<leader>u", desc = "Toggle Undotree" },
             { "<leader>uc", desc = "Toggle env secret cloak" },
+
+            -- Debug mappings (from debugger.lua)
+            { "<leader>dt", desc = "Toggle Breakpoint" },
+            { "<leader>dc", desc = "Continue" },
+            { "<leader>ds", desc = "Step Over" },
+            { "<leader>di", desc = "Step Into" },
+            { "<leader>do", desc = "Step Out" },
 
             -- Telescope mappings (from telescope.lua)
             { "<leader>ff", desc = "Find files" },
