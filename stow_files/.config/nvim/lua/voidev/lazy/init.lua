@@ -15,7 +15,13 @@ return {
     },
     "nvim-tree/nvim-web-devicons",
 
-    "github/copilot.vim",
+    {
+        "github/copilot.vim",
+        init = function()
+            -- cmd.exe mangles the default "npx ...@^x.y" version spec on Windows
+            if vim.fn.has("win32") == 1 then vim.g.copilot_version = "latest" end
+        end,
+    },
     "eandrju/cellular-automaton.nvim",
     "gpanders/editorconfig.nvim",
 }

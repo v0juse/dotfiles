@@ -13,7 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = "voidev.lazy",
-    change_detection = { notify = false }
+    change_detection = { notify = false },
+    -- luarocks/hererocks is not set up on Windows (needs python + C toolchain)
+    rocks = { enabled = vim.fn.has("win32") == 0 },
 })
 --[[
 require("lazy").setup({
