@@ -5,6 +5,7 @@ Set-Alias lg lazygit
 Set-Alias n nvim
 Set-Alias v nvim
 Set-Alias t tmux-sessionizer
+Set-Alias pr ~/repos/prtui/prtui.exe
 if (Get-Command bat -ErrorAction SilentlyContinue) {
     Remove-Item Alias:cat -Force -ErrorAction SilentlyContinue
     Set-Alias cat bat
